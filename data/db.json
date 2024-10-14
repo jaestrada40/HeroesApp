@@ -21,7 +21,8 @@
       "publisher": "DC Comics",
       "alter_ego": "Kal-El",
       "first_appearance": "Action Comics #1",
-      "characters": "Kal-El"
+      "characters": "Kal-El",
+      "alt_img": "https://www.zonanegativa.com/imagenes/2022/07/Superman-Cuatro-Estaciones.jpg"
     },
     {
       "id": "dc-flash",
@@ -144,28 +145,12 @@
       "characters": "Matthew Michael Murdock"
     },
     {
-      "id": "marvel-hawkeye",
-      "superhero": "Hawkeye",
-      "publisher": "Marvel Comics",
-      "alter_ego": "Clinton Francis Barton",
-      "first_appearance": "Tales of Suspense #57",
-      "characters": "Clinton Francis Barton"
-    },
-    {
       "id": "marvel-cyclops",
       "superhero": "Cyclops",
       "publisher": "Marvel Comics",
       "alter_ego": "Scott Summers",
       "first_appearance": "X-Men #1",
       "characters": "Scott Summers"
-    },
-    {
-      "id": "marvel-silver",
-      "superhero": "Silver Surfer",
-      "publisher": "Marvel Comics",
-      "alter_ego": "Norrin Radd",
-      "first_appearance": "The Fantastic Four #48",
-      "characters": "Norrin Radd"
     }
   ]
 }

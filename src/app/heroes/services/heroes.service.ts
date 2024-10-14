@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Hero } from '../interfaces/hero.interface';
 import { environments } from '../../../environments/environments';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class HeroesService {
@@ -16,11 +17,29 @@ export class HeroesService {
   }
 
   getHeroById(id: string): Observable<Hero | undefined> {
-    return this.http.get<Hero>(`${this.baseUrl}/heroes/${id}`).pipe(
-      catchError((error: any): Observable<Hero | undefined> => {
-        console.error('Error fetching hero:', error); // Optional logging
-        return of(undefined);
-      })
+    return this.http
+      .get<Hero>(`${this.baseUrl}/heroes/${id}`)
+      .pipe(catchError((error) => of(undefined)));
+  }
+
+  getSuggestions(query: string): Observable<Hero[]> {
+    return this.http.get<Hero[]>(`${this.baseUrl}/heroes?q=${query}&_limit=6`);
+  }
+
+  addHero(hero: Hero): Observable<Hero> {
+    return this.http.post<Hero>(`${this.baseUrl}/heroes`, hero);
+  }
+
+  updateHero(hero: Hero): Observable<Hero> {
+    if (!hero.id) throw Error('Hero is is required');
+
+    return this.http.patch<Hero>(`${this.baseUrl}/heroes/${hero.id}`, hero);
+  }
+
+  deleteHeroById(id: string): Observable<boolean> {
+    return this.http.delete(`${this.baseUrl}/heroes/${id}`).pipe(
+      map((resp) => true),
+      catchError((err) => of(false))
     );
   }
 }
